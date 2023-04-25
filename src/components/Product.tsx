@@ -65,8 +65,8 @@ export const Product = (props: {closeApresentation: boolean, color: string, side
             className={`flex items-center h-full transition-all ease-in-out duration-1000
                 ${props.color === "blue" ? 'bg-indigo-300' : 'bg-purple-400'}
                 ${props.side === "right" && props.openRightSide ? 'w-[95vw] bg-indigo-400' : 'w-[50vw]'}
-                ${props.side === "left" && props.openRightSide ? 'mr-[-45vw] bg-indigo-600': ''}
-                ${props.side === "right" && props.openLeftSide ? 'ml-[-45vw] bg-purple-600' : ''}
+                ${props.side === "left" && props.openRightSide ? 'mr-[-45vw] bg-indigo-800': ''}
+                ${props.side === "right" && props.openLeftSide ? 'ml-[-45vw] bg-purple-800' : ''}
                 ${props.side === "left" && props.openLeftSide ? 'w-[95vw] bg-purple-500': 'w-[50vw]'}`
             }
         >

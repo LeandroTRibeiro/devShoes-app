@@ -63,8 +63,8 @@ export const Home = () => {
     return (
         <div className="bg-stone-200 w-screen h-screen flex overflow-hidden relative">
             <NavBar openMenu={openMenu} closeApresentation={closeApresentation} HandlerOpenMenu={HandlerOpenMenu} HandlerOpenSide={HandlerOpenSide}/>
-            {/* <Apresentation closeApresentation={closeApresentation} HandlerCloseApresentation={HandlerCloseApresentation}/>
-            <TouchHere closeApresentation={closeApresentation} blurPage={blurPage} setBlurPage={HandlerBlurPage}/> */}
+            <Apresentation closeApresentation={closeApresentation} HandlerCloseApresentation={HandlerCloseApresentation}/>
+            <TouchHere closeApresentation={closeApresentation} blurPage={blurPage} setBlurPage={HandlerBlurPage}/>
             <div className={`w-screen h-screen justify-center items-center flex transition-all ease-in-out duration-300 ${openMenu || openPayment ? 'blur-sm opacity-90' : ''} ${blurPage ? 'blur-sm opacity-90' : ''}`}>
                 <Suspense fallback={null}>
                     <Product 

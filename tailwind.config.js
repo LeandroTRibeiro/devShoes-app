@@ -10,7 +10,7 @@ export default {
         'montserrat': ['Montserrat'],
       },
       backgroundImage: {
-        'card-background': "url('/src/assets/images/backgroundCard.jpeg')",
+        'card-background': "url('/src/assets/images/backgroundCard.jpg')",
       },
       animation: {
         'ping-first': 'ping .5s cubic-bezier(0, 0, 0.2, 1) infinite',
