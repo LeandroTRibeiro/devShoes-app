@@ -2,8 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+.turn-card-into-reverse {
+  transform: rotate3d(0, 180, 0, 180deg);
+  animation: turn-card-into 0.2s ease-in-out reverse;
+}
+
+.turn-card-into {
+  animation: turn-card-into 0.2s ease-in-out;
+}
+
+@keyframes turn-card-into {
+  0% {
+    opacity: 1;
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate3d(0, 180, 0, 180deg);
+  }
+}
+
+.turn-card {
+  transform: rotate3d(0, 180, 0, 180deg);
+}
+
 .fade-card-into {
-  animation: fade-card-into .5s ease-in-out;
+  animation: fade-card-into .3s ease-in-out;
 }
 
 @keyframes fade-card-into {
@@ -18,7 +42,7 @@
 }
 
 .fade-card-exit {
-  animation: fade-card-exit .5s ease-in-out;
+  animation: fade-card-exit .3s ease-in-out;
 }
 
 @keyframes fade-card-exit {

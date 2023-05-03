@@ -5,7 +5,17 @@ export const slice = createSlice({
     initialState: {
         userId: '01',
         products: [
-            {productId: 'snk1', amount: 1,stock: 6, price: 78, discount: 10, name: 'NEW FILA SNEAKER', description: 'XLTV-85', side: 'right'}
+            {
+                productId: 'snk1', 
+                name: 'NEW FILA SNEAKER', 
+                description: 'XLTV-85', 
+                amount: 1,
+                stock: 6, 
+                price: 78,
+                delivery: 18,
+                discount: 10, 
+                side: 'right' 
+            }
         ]
     },
     reducers: {
@@ -24,6 +34,7 @@ export const slice = createSlice({
                     amount: action.payload.amount,
                     stock: action.payload.stock,
                     price: action.payload.price,
+                    delivery: action.payload.delivery,
                     discount: action.payload.discount,
                     name: action.payload.name,
                     description: action.payload.description,

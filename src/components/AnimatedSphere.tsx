@@ -9,7 +9,6 @@ export const AnimatedSphere = (props: {color: string}) => {
                 distort={0.5}
                 speed={1}
                 roughness={1}
-                
             />
         </Sphere>
     );

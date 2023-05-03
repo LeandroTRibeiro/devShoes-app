@@ -4,47 +4,48 @@ import logo from '../assets/images/logo.png';
 import logo2 from '../assets/images/logo2.png';
 import logo3 from '../assets/images/logo3.png';
 
-export const Apresentation = (props: {closeApresentation: boolean, HandlerCloseApresentation: () => void}) => {
+export const Apresentation = (props: {HandlerCloseApresentation: () => void}) => {
 
     const [startGlitchEffect, setStartGlitchEffect] = useState(false);
-    const [finishApresentation, setFinishApresentation] = useState(false);
-    
-    const [hiddenApresentation, setHiddenApresentation] = useState(false);
+    const [moveLogoEffect, setMoveLogoEffect] = useState(false);
+    const [opacityPage, setOpacityPage] = useState(false);
 
     const glitchEffectTimer = 3000;
-    const finishEffectTimer = 2500;
-    const closeApresentation = 500;
+    const moveLogoEffectTimer = 2500;
+    const opacityPageTimer = 500;
+    const closeApresentationTimer = 600;
 
     useEffect(() => {
+
         const timer = setTimeout(() => {
             setStartGlitchEffect(true);
             setTimeout(() => {
-               setFinishApresentation(true);
+               setMoveLogoEffect(true);
                setTimeout(() => {
+                setOpacityPage(true);
+                setTimeout(() => {
                     props.HandlerCloseApresentation();
-                    setTimeout(() => {
-                        setHiddenApresentation(true);
-                    }, 500)
-               }, closeApresentation);
-            }, finishEffectTimer)
+                }, closeApresentationTimer)
+               }, opacityPageTimer);
+            }, moveLogoEffectTimer)
         }, glitchEffectTimer);
 
         return () => clearTimeout(timer);
+
     },[])
 
     return (
 
-        <div 
+        <div
             className={`absolute w-screen h-screen bg-stone-100 z-50 flex justify-center items-center p-2 transition-all ease-in-out duration-500 
-                ${props.closeApresentation ? 'opacity-0' : ''}
-                ${hiddenApresentation ? 'hidden' : ''}`
+                ${opacityPage ? 'opacity-0' : ''}`
             }
         >
             <img 
                 src={logo3} 
                 alt="logo" 
                 className={`absolute w-36    
-                    ${startGlitchEffect && !finishApresentation ? 'glitch3' : 'hidden'}`
+                    ${startGlitchEffect && !moveLogoEffect ? 'glitch3' : 'hidden'}`
                 }
             />
 
@@ -52,7 +53,7 @@ export const Apresentation = (props: {closeApresentation: boolean, HandlerCloseA
                 src={logo2} 
                 alt="logo" 
                 className={`absolute w-36    
-                    ${startGlitchEffect && !finishApresentation ? 'glitch2' : 'hidden'}`
+                    ${startGlitchEffect && !moveLogoEffect ? 'glitch2' : 'hidden'}`
                 }
             />
 
@@ -60,13 +61,13 @@ export const Apresentation = (props: {closeApresentation: boolean, HandlerCloseA
                 src={logo} 
                 alt="logo" 
                 className={`absolute w-36    
-                    ${startGlitchEffect && !finishApresentation ? 'glitch1' : finishApresentation ? 'logo-return top-2' : 'logo'}`
+                    ${startGlitchEffect && !moveLogoEffect ? 'glitch1' : moveLogoEffect ? 'logo-return top-2' : 'logo'}`
                 }
             />
 
             <div 
                 className={`absolute -z-10  ml-[350px] 
-                    ${startGlitchEffect && !finishApresentation ? 'glitch3' : 'hidden'}`
+                    ${startGlitchEffect && !moveLogoEffect ? 'glitch3' : 'hidden'}`
                 }
             >
                 <h1 className='font-montserrat font-semibold text-4xl'>DIAMOND</h1>
@@ -75,7 +76,7 @@ export const Apresentation = (props: {closeApresentation: boolean, HandlerCloseA
 
             <div 
                 className={`absolute -z-10  ml-[350px] 
-                    ${startGlitchEffect && !finishApresentation ? 'glitch2' : 'hidden'}`
+                    ${startGlitchEffect && !moveLogoEffect ? 'glitch2' : 'hidden'}`
                 }
             >
                 <h1 className='font-montserrat font-semibold text-4xl'>DIAMOND</h1>
@@ -84,7 +85,7 @@ export const Apresentation = (props: {closeApresentation: boolean, HandlerCloseA
 
             <div 
                 className={`absolute -z-10  ml-[350px] 
-                    ${startGlitchEffect && !finishApresentation ? 'glitch1' : finishApresentation ? 'logo-name-reverse' : 'logo-name'}`
+                    ${startGlitchEffect && !moveLogoEffect ? 'glitch1' : moveLogoEffect ? 'logo-name-reverse' : 'logo-name'}`
                 }
             >
                 <h1 className='font-montserrat font-semibold text-4xl'>DIAMOND</h1>

@@ -1,21 +1,18 @@
-import { MinusIcon, PlusIcon, TrashIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import fila from '../assets/images/fila2.png';
-import { useAppSelector } from '../redux/hooks/useAppSelector';
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addAmount, addToCart, delAmount, deleteToCart } from '../redux/reducers/ShoppingCartReducer';
+import React from 'react';
 
-export const ShoppingCart = (props: {setOpenShoppingCart: () => void, openShoppingCart: boolean}) => {
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../redux/hooks/useAppSelector';
+import { addAmount, delAmount, deleteToCart } from '../redux/reducers/ShoppingCartReducer';
+
+import fila from '../assets/images/fila2.png';
+
+import { MinusIcon, PlusIcon, TrashIcon, XMarkIcon } from '@heroicons/react/24/outline';
+
+export const ShoppingCart = (props: {setOpenShoppingCart: () => void, openShoppingCart: boolean, HandlerOpenPayment: () => void}) => {
 
     const shoppingCartReducer = useAppSelector(state => state.shoppingCartReducer.products);
 
     const dispatch = useDispatch();
-
-    const [shoppingCartState, setShoppingCartState] = useState(shoppingCartReducer);
-
-    useEffect(() => {
-        setShoppingCartState(shoppingCartReducer);
-    }, [props.openShoppingCart, shoppingCartReducer]);
 
     const HandlerDeleteProduct = (productId: string) => {
         dispatch(deleteToCart(productId));
@@ -32,7 +29,7 @@ export const ShoppingCart = (props: {setOpenShoppingCart: () => void, openShoppi
     return (
 
         <div 
-            className={`absolute w-screen h-screen bg-stone-200 transition-all ease-in-out duration-700 z-40 flex justify-center items-center p-8 pt-20 shadow-lg shadow-black
+            className={`absolute w-screen h-screen bg-stone-200 transition-all duration-700 ease-in-out z-40 flex justify-center items-center p-8 pt-20 shadow-lg shadow-black
                 ${props.openShoppingCart ? 'top-0' : 'top-[100vh]'}
             `}
         >
@@ -54,9 +51,9 @@ export const ShoppingCart = (props: {setOpenShoppingCart: () => void, openShoppi
                     </div>
                 </div>
                 <div className='grid grid-cols-shopping gap-3 items-center pb-5 border-b-2 border-stone-800'>
-                    {shoppingCartState.map((item) => (
-                        <>
-                                <div className='w-full flex justify-center'>
+                    {shoppingCartReducer.map((item, index) => (
+                        <React.Fragment key={index}>
+                            <div className='w-full flex justify-center'>
                                     <img src={fila} alt="fila" className={`w-36 drop-shadow-lg ${item.side === 'left' ? 'hue-rotate-60' : ''}`}/>
                                 </div>
                             <div className='w-full flex flex-col items-center'>
@@ -85,30 +82,30 @@ export const ShoppingCart = (props: {setOpenShoppingCart: () => void, openShoppi
                                 </select>
                             </div>
                             <div className='w-full flex justify-center'>
-                                ${item.price}
+                                ${item.amount * item.price}
                             </div>
                             <div className='w-full flex justify-center'>
-                                ${item.discount}
+                                ${(item.amount * (item.price * (item.discount / 100))).toFixed(2)}
                             </div>
                             <div className='w-full flex justify-center'>
-                                $18
+                                ${item.amount * item.delivery}
                             </div>
                             <div className='font-semibold w-full flex justify-center'> 
-                                ${item.price - item.discount + 18}
+                                ${(item.amount * (item.price - (item.price * (item.discount / 100)) + item.delivery)).toFixed(2)}
                             </div>
                             <div className='font-semibold w-full flex justify-center'>
                                 <TrashIcon className='w-6 text-red-500 transition-all ease-in-out duration-100 cursor-pointer hover:scale-125 active:scale-50' onClick={() => HandlerDeleteProduct(item.productId)}/>
                             </div>
-                        </>
+                        </React.Fragment>
                     ))}
                 </div>
                 <div className='w-full flex justify-end'>
                     <div className='flex flex-col mt-5 w-fit text-green-500 gap-1'>
                         <div className='flex items-end font-semibold text-3xl gap-3'>
                             <div className='font-normal text-base'>TOTAL PRICE</div>
-                            $150
+                            ${shoppingCartReducer.reduce((acc, item) => acc + (item.amount *(item.price - (item.price * (item.discount / 100)) + item.delivery)), 0).toFixed(2)}
                         </div>
-                        <button className='font-sans text-base transition-all ease-in-out duration-300 border-2 border-green-500 bg-green-500 text-stone-200 py-2 rounded-lg hover:bg-transparent hover:text-green-500 font-semibold'>BUY NOW</button>
+                        <button className='font-sans text-base transition-all ease-in-out duration-300 border-2 border-green-500 bg-green-500 text-stone-200 py-2 rounded-lg hover:bg-transparent hover:text-green-500 font-semibold' onClick={props.HandlerOpenPayment}>BUY NOW</button>
                     </div>
                 </div>
             </div>

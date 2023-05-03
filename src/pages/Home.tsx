@@ -1,27 +1,37 @@
-import { Suspense, useMemo, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import { Apresentation } from '../components/Apresentation';
 import { NavBar } from '../components/NavBar';
-import { TouchHere } from '../components/TouchHere';
 import { Product } from '../components/Product';
 import { ShoppingCart } from '../components/ShoppingCart';
 import { Payment } from '../components/Payment';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
 
+    const navigate = useNavigate();
+    
     const [closeApresentation, setCloseApresentation] = useState(false);
 
     const [openMenu, setOpenMenu] = useState(false);
-
     const [openShoppingCart, setOpenShoppingCart] = useState(false);
-
     const [openPayment, setOpenPayment] = useState(false);
-
-    const [blurPage, setBlurPage] = useState(false);
-
     const [openRightSide, setOpenRightSide] = useState(false);
     const [openLeftSide, setOpenLeftSide] = useState(false);
 
+    useEffect(() => {
+
+        const HandlerUnsupportedScreen = () => {
+            if(window.innerWidth < 768) navigate('/mobile');
+        };
+
+        window.addEventListener("resize", HandlerUnsupportedScreen);
+
+        HandlerUnsupportedScreen();
+
+        return () => window.removeEventListener("resize", HandlerUnsupportedScreen);
+
+    }, [])
 
     const HandlerCloseApresentation = () => {
         setCloseApresentation(!closeApresentation);
@@ -37,10 +47,6 @@ export const Home = () => {
 
     const HandlerOpenPayment = () => {
         setOpenPayment(!openPayment);
-    };
-
-    const HandlerBlurPage = () => {
-        setBlurPage(!blurPage);
     };
 
     const HandlerOpenSide = (side: string) => {
@@ -62,10 +68,25 @@ export const Home = () => {
     
     return (
         <div className="bg-stone-200 w-screen h-screen flex overflow-hidden relative">
-            <NavBar openMenu={openMenu} closeApresentation={closeApresentation} HandlerOpenMenu={HandlerOpenMenu} HandlerOpenSide={HandlerOpenSide}/>
-            <Apresentation closeApresentation={closeApresentation} HandlerCloseApresentation={HandlerCloseApresentation}/>
-            <TouchHere closeApresentation={closeApresentation} blurPage={blurPage} setBlurPage={HandlerBlurPage}/>
-            <div className={`w-screen h-screen justify-center items-center flex transition-all ease-in-out duration-300 ${openMenu || openPayment ? 'blur-sm opacity-90' : ''} ${blurPage ? 'blur-sm opacity-90' : ''}`}>
+
+            <NavBar 
+                closeApresentation={closeApresentation} 
+                openMenu={openMenu} 
+                HandlerOpenMenu={HandlerOpenMenu} 
+                HandlerOpenSide={HandlerOpenSide}
+            />
+
+            {!closeApresentation && 
+                <Apresentation 
+                    HandlerCloseApresentation={HandlerCloseApresentation}
+                />
+            }
+
+            <div 
+                className={`w-screen h-screen justify-center items-center flex transition-all ease-in-out duration-300 
+                    ${openMenu || openPayment ? 'blur-sm opacity-90' : ''}`}
+                >
+
                 <Suspense fallback={null}>
                     <Product 
                         closeApresentation={closeApresentation}
@@ -79,7 +100,7 @@ export const Home = () => {
                     />
                     <Product 
                         closeApresentation={closeApresentation}
-                        color={"green"}
+                        color={"purple"}
                         side={"left"}
                         openRightSide={openRightSide}
                         openLeftSide={openLeftSide}
@@ -88,9 +109,20 @@ export const Home = () => {
                         HandlerOpenPayment={HandlerOpenPayment}
                     />
                 </Suspense>
-                <ShoppingCart setOpenShoppingCart={HandlerOpenShoppingCart} openShoppingCart={openShoppingCart} />
+
+                <ShoppingCart 
+                    openShoppingCart={openShoppingCart} 
+                    setOpenShoppingCart={HandlerOpenShoppingCart} 
+                    HandlerOpenPayment={HandlerOpenPayment} 
+                />
             </div>
-            <Payment openPayment={openPayment} HandlerOpenPayment={HandlerOpenPayment}/>
+
+            <Payment 
+                openPayment={openPayment} 
+                HandlerOpenPayment={HandlerOpenPayment} 
+                openShoppingCart={openShoppingCart}
+                setOpenShoppingCart={HandlerOpenShoppingCart} 
+            />
         </div>
     );
 };
