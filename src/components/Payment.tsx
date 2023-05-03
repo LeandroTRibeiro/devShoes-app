@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { useAppSelector } from '../redux/hooks/useAppSelector';
 
-import mastercard from '../assets/images/Mastercard-logo.svg';
-import chip from '../assets/images/chip2.png';
+import mastercard from '../assets/svgs/Mastercard-logo.svg';
+import chip from '../assets/images/chip.png';
 
 import { PencilIcon, WifiIcon, XMarkIcon } from '@heroicons/react/24/outline';
 

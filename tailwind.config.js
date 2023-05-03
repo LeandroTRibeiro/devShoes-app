@@ -16,7 +16,7 @@ export default {
           'shopping': 'repeat(9, minmax(50px, 1fr))',
         },
         screens: {
-          'laptop': {'max': '1024px'},
+          'laptop': {'max': '1124px'},
           'tablet': {'max': '868px'},
         },
     },

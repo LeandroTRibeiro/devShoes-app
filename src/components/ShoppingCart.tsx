@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../redux/hooks/useAppSelector';
 import { addAmount, delAmount, deleteToCart } from '../redux/reducers/ShoppingCartReducer';
 
-import fila from '../assets/images/fila2.png';
+import fila from '../assets/images/fila.png';
 
 import { MinusIcon, PlusIcon, TrashIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
