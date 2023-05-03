@@ -1,22 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+type ProductType = {
+    productId: string, 
+    name: string, 
+    description: string, 
+    amount: number,
+    stock: number, 
+    price: number,
+    delivery: number,
+    discount: number, 
+    side: string 
+};
+
 export const slice = createSlice({
     name: 'shoppingCartReducer',
     initialState: {
         userId: '01',
-        products: [
-            {
-                productId: 'snk1', 
-                name: 'NEW FILA SNEAKER', 
-                description: 'XLTV-85', 
-                amount: 1,
-                stock: 6, 
-                price: 78,
-                delivery: 18,
-                discount: 10, 
-                side: 'right' 
-            }
-        ]
+        products: [] as ProductType[] 
     },
     reducers: {
         addToCart: (state, action) => {
