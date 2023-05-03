@@ -101,7 +101,7 @@ export const NavBar = (props: {openMenu: boolean, HandlerOpenMenu: () => void, c
             <a  className='flex items-center justify-center gap-2 transition-all duration-100 z-50 ease-in-out hover:brightness-125 active:scale-125' onClick={() => props.HandlerOpenSide("restart")}>
                 <img src={logo} alt="logo" className='w-20'/>
                 <div className={`absolute flex items-center gap-2 ml-[160px] ${props.closeApresentation ? 'fade-menu-5' : ''}`}>
-                    <h1 className='font-montserrat font-semibold'>DIAMOND</h1>
+                    <h1 className='font-montserrat font-semibold'>DEVSHOES</h1>
                     <h2 className='font-montserrat font-thin text-xs'>SNEAKERS.</h2>
                 </div>
             </a>
