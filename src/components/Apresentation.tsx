@@ -70,7 +70,7 @@ export const Apresentation = (props: {HandlerCloseApresentation: () => void}) =>
                     ${startGlitchEffect && !moveLogoEffect ? 'glitch3' : 'hidden'}`
                 }
             >
-                <h1 className='font-montserrat font-semibold text-4xl'>DIAMOND</h1>
+                <h1 className='font-montserrat font-semibold text-4xl'>DEVSHOES</h1>
                 <h2 className='font-montserrat font-thin'>SNEAKERS.</h2>
             </div>
 
@@ -79,7 +79,7 @@ export const Apresentation = (props: {HandlerCloseApresentation: () => void}) =>
                     ${startGlitchEffect && !moveLogoEffect ? 'glitch2' : 'hidden'}`
                 }
             >
-                <h1 className='font-montserrat font-semibold text-4xl'>DIAMOND</h1>
+                <h1 className='font-montserrat font-semibold text-4xl'>DEVSHOES</h1>
                 <h2 className='font-montserrat font-thin'>SNEAKERS.</h2>
             </div>
 
@@ -88,7 +88,7 @@ export const Apresentation = (props: {HandlerCloseApresentation: () => void}) =>
                     ${startGlitchEffect && !moveLogoEffect ? 'glitch1' : moveLogoEffect ? 'logo-name-reverse' : 'logo-name'}`
                 }
             >
-                <h1 className='font-montserrat font-semibold text-4xl'>DIAMOND</h1>
+                <h1 className='font-montserrat font-semibold text-4xl'>DEVSHOES</h1>
                 <h2 className='font-montserrat font-thin'>SNEAKERS.</h2>
             </div>
         </div>
