@@ -51,7 +51,7 @@ export const Payment = (props: {openPayment: boolean, HandlerOpenPayment: () => 
     return (
 
         <div className={`absolute w-screen h-screen transition-all ease-in-out duration-700 backdrop-blur-x1 bg-white/25 flex flex-col justify-center items-center p-5 z-50 ${props.openPayment ? 'top-0' : 'top-[-100vh]'}`}>
-            <div className='w-fit h-fit bg-white rounded-lg flex justify-center items-center p-5 gap-10'>
+            <div className='w-[85vw] max-h-screen bg-white rounded-lg flex justify-center items-center p-5 gap-10'>
                 <div className='flex-1 flex flex-col gap-5 laptop:gap-3 items-center justify-center pb-0'>
                     <div className={`w-[450px] h-[250px] laptop:w-[350px] laptop:h-[200px] bg-black bg-card-background rounded-2xl shadow-md shadow-black border-r-[1px] border-b-[1px] border-stone-800 flex justify-center items-center transition-all ease-in-out duration-500 ${turnCard ? 'turn-card' : ''}`}>
                         <div className={`w-full h-full p-5 flex flex-col justify-between transition-all ease-in-out duration-75 ${turnCard ? 'turn-card-into opacity-0' : ''}`}>
