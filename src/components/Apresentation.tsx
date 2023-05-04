@@ -13,7 +13,7 @@ export const Apresentation = (props: {HandlerCloseApresentation: () => void}) =>
     const glitchEffectTimer = 3000;
     const moveLogoEffectTimer = 2500;
     const opacityPageTimer = 500;
-    const closeApresentationTimer = 600;
+    const closeApresentationTimer = 250;
 
     useEffect(() => {
 
