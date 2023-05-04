@@ -122,14 +122,14 @@ export const Product = (props: {closeApresentation: boolean, color: string, side
             >
                 <div>
                     <h1
-                        className={`text-7xl laptop:text-6xl font-extrabold
-                            ${props.closeApresentation && props.side === "right" ? 'fade-sneaker1' : props.closeApresentation && props.side === "left" ? 'fade-sneaker3' : ''}`
+                        className={`text-7xl laptop:text-6xl font-extrabold transition-all ease-in-out duration-75
+                            ${props.closeApresentation && props.side === "right" ? 'fade-sneaker1' : props.closeApresentation && props.side === "left" ? 'fade-sneaker3' : 'opacity-0'}`
                         }>
                             PERFECT
                     </h1>
                     <h2
-                        className={`font-semibold
-                            ${props.closeApresentation && props.side === "right" ? 'fade-sneaker2' : props.closeApresentation && props.side === "left" ? 'fade-sneaker4' : ''}`
+                        className={`font-semibold transition-all ease-in-out duration-75
+                            ${props.closeApresentation && props.side === "right" ? 'fade-sneaker2' : props.closeApresentation && props.side === "left" ? 'fade-sneaker4' : 'opacity-0'}`
                         }>
                             SNEAKERS.
                     </h2>
@@ -139,20 +139,20 @@ export const Product = (props: {closeApresentation: boolean, color: string, side
                 className="absolute font-montserrat mt-40 text-white opacity-60 w-[50vw] flex flex-col items-center">
                 <div>
                     <h1
-                        className={`text-8xl laptop:text-6xl font-extrabold
-                            ${props.closeApresentation && props.side === "right" ? 'fade-sneaker1' : props.closeApresentation && props.side === "left" ? 'fade-sneaker3' : ''}`
+                        className={`text-8xl laptop:text-6xl font-extrabold transition-all ease-in-out duration-75
+                            ${props.closeApresentation && props.side === "right" ? 'fade-sneaker1' : props.closeApresentation && props.side === "left" ? 'fade-sneaker3' : 'opacity-0'}`
                         }>
                             SHOES
                     </h1>
                     <h2
-                        className={`text-6xl laptop:text-4xl font-extrabold
-                            ${props.closeApresentation && props.side === "right" ? 'fade-sneaker2' : props.closeApresentation && props.side === "left" ? 'fade-sneaker4' : ''}`
+                        className={`text-6xl laptop:text-4xl font-extrabold transition-all ease-in-out duration-75
+                            ${props.closeApresentation && props.side === "right" ? 'fade-sneaker2' : props.closeApresentation && props.side === "left" ? 'fade-sneaker4' : 'opacity-0'}`
                         }>
                             COMFORTABLE
                     </h2>
                 </div>
             </div>
-            <div className='w-[50vw] h-[75vh]'>
+            <div className="w-[50vw] h-[75vh]">
                 <Canvas
                     className={`cursor-pointer transition-all duration-1000 ease-in-out
                         ${props.color === "blue" ? "" : "hue-rotate-60"}
