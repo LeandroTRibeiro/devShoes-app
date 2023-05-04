@@ -108,23 +108,6 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
-.touch {
-  animation: touch-animation 2s ease-in-out;
-}
-
-@keyframes touch-animation {
-  0% {
-    transform: translateX(-208px) translateY(-208px);
-  }
-  50% {
-    transform: translateX(0) translateY(-208px);
-  }
-  100% {
-    transform:  translateX(0) translateY(0);
-  }
-
-}
-
 .fade-menu-1 {
   animation: fade-menu .7s ease-in-out;
 }
@@ -163,10 +146,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .fade-sneaker4 {
   animation: fade-sneaker-reverse .5s ease-in-out;
-}
-
-.fade-sneaker-reverse {
-  animation: fade-sneaker-reverse 1.5s ease-in-out;
 }
 
 @keyframes fade-sneaker-reverse {
